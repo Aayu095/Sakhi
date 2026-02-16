@@ -91,7 +91,7 @@ graph TD
 
 | **The "Sakhi" Interface** | **Voice-First Learning** | **Interactive Modules** |
 |:---:|:---:|:---:|
-| <img src="./assets/screenshots/welcome.jpeg" width="200" alt="Welcome Screen"/> | <img src="./assets/screenshots/call.jpeg" width="200" alt="Voice Call"/> | <img src="./assets/screenshots/learn.png" width="200" alt="Learning"/> |
+| <img src="./assets/screenshots/welcome.jpeg" width="200" alt="Welcome Screen"/> | <img src="./assets/screenshots/call.jpeg" width="200" alt="Voice Call"/> | <img src="./assets/screenshots/learn.png" width="400" alt="Learning"/> |
 | *Simple, welcoming home screen* | *Real-time AI conversation* | *Visual learning cards* |
 
 *(Note: Add screenshots to `assets/screenshots/` to see them here)*
