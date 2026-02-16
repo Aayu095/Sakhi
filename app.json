@@ -1,0 +1,56 @@
+{
+  "expo": {
+    "name": "Dididial",
+    "slug": "Dididial",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSMicrophoneUsageDescription": "We need microphone access to let you talk to Didi."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "permissions": [
+        "RECORD_AUDIO",
+        "RECORD_AUDIO"
+      ],
+      "package": "com.dididial.app",
+      "edgeToEdgeEnabled": true
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "84d52b11-ef9a-48dd-b0ec-2cac9e315995"
+      }
+    },
+    "runtimeVersion": "1.0.0",
+    "updates": {
+      "url": "https://u.expo.dev/84d52b11-ef9a-48dd-b0ec-2cac9e315995"
+    },
+    "plugins": [
+      "expo-font",
+      [
+        "expo-speech-recognition",
+        {
+          "microphonePermission": "Sakhi से बात करने के लिए माइक्रोफोन की अनुमति दें",
+          "speechRecognitionPermission": "आपकी बात सुनने के लिए स्पीच रिकग्निशन की अनुमति दें"
+        }
+      ]
+    ]
+  }
+}
