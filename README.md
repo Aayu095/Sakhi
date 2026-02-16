@@ -91,7 +91,7 @@ graph TD
 
 | **The "Sakhi" Interface** | **Voice-First Learning** | **Interactive Modules** |
 |:---:|:---:|:---:|
-| <img src="./assets/screenshots/welcome.png" width="200" alt="Welcome Screen"/> | <img src="./assets/screenshots/call.png" width="200" alt="Voice Call"/> | <img src="./assets/screenshots/learn.png" width="200" alt="Learning"/> |
+| <img src="./assets/screenshots/welcome.jpeg" width="200" alt="Welcome Screen"/> | <img src="./assets/screenshots/call.jpeg" width="200" alt="Voice Call"/> | <img src="./assets/screenshots/learn.png" width="200" alt="Learning"/> |
 | *Simple, welcoming home screen* | *Real-time AI conversation* | *Visual learning cards* |
 
 *(Note: Add screenshots to `assets/screenshots/` to see them here)*
@@ -121,7 +121,7 @@ graph TD
 
 1.  **Clone the Repository**
     ```bash
-    git clone https://github.com/yourusername/sakhi.git
+    git clone https://github.com/Aayu095/sakhi.git
     cd sakhi
     ```
 
@@ -159,12 +159,6 @@ graph TD
 *   **Phase 3: Community**
     *   🤝 Peer-to-peer mentorship
     *   🛍️ Hyperlocal marketplace for women creators
-
----
-
-## 🤝 Contributing
-
-We welcome contributions! Please see our [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to submit pull requests, report issues, or request features.
 
 ---
 

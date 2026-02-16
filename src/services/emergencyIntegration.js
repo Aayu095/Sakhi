@@ -179,7 +179,7 @@ export async function sendEmergencySMS(contacts, message) {
       ? `मेरी लोकेशन: https://maps.google.com/?q=${location.latitude},${location.longitude}`
       : 'लोकेशन उपलब्ध नहीं है';
     
-    const fullMessage = `${message}\n\n${locationText}\n\nDididial ऐप से भेजा गया`;
+    const fullMessage = `${message}\n\n${locationText}\n\nSakhi ऐप से भेजा गया`;
     
     for (const contact of contacts) {
       const smsUrl = `sms:${contact.phone}?body=${encodeURIComponent(fullMessage)}`;
