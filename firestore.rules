@@ -1,0 +1,84 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return signedIn() && request.auth.uid == userId;
+    }
+
+    function isShortText(value, maxLength) {
+      return value is string && value.size() > 0 && value.size() <= maxLength;
+    }
+
+    match /users/{userId} {
+      allow read, create, update, delete: if isOwner(userId);
+    }
+
+    match /communityProfiles/{userId} {
+      allow read: if signedIn();
+      allow create, update: if isOwner(userId)
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.displayName is string
+        && request.resource.data.displayName.size() <= 40;
+      allow delete: if isOwner(userId);
+    }
+
+    match /communityStories/{storyId} {
+      allow read: if signedIn();
+      allow create: if signedIn()
+        && request.resource.data.authorId == request.auth.uid
+        && isShortText(request.resource.data.authorName, 40)
+        && isShortText(request.resource.data.title, 100)
+        && isShortText(request.resource.data.content, 900)
+        && isShortText(request.resource.data.category, 40);
+      allow update: if isOwner(resource.data.authorId)
+        && request.resource.data.authorId == resource.data.authorId
+        && isShortText(request.resource.data.authorName, 40)
+        && isShortText(request.resource.data.title, 100)
+        && isShortText(request.resource.data.content, 900)
+        && isShortText(request.resource.data.category, 40);
+      allow delete: if isOwner(resource.data.authorId);
+    }
+
+    match /communityHelpRequests/{requestId} {
+      allow read: if signedIn();
+      allow create: if signedIn()
+        && request.resource.data.authorId == request.auth.uid
+        && isShortText(request.resource.data.authorName, 40)
+        && isShortText(request.resource.data.title, 100)
+        && isShortText(request.resource.data.description, 700)
+        && isShortText(request.resource.data.category, 40)
+        && request.resource.data.isResolved == false;
+      allow update: if isOwner(resource.data.authorId)
+        && request.resource.data.authorId == resource.data.authorId
+        && isShortText(request.resource.data.authorName, 40)
+        && isShortText(request.resource.data.title, 100)
+        && isShortText(request.resource.data.description, 700)
+        && isShortText(request.resource.data.category, 40)
+        && request.resource.data.isResolved is bool;
+      allow delete: if isOwner(resource.data.authorId);
+
+      match /offers/{offerId} {
+        allow read: if signedIn();
+        allow create, update: if isOwner(offerId)
+          && request.resource.data.helperId == request.auth.uid
+          && isShortText(request.resource.data.helperName, 40)
+          && isShortText(request.resource.data.message, 400);
+        allow delete: if isOwner(offerId);
+      }
+    }
+
+    match /communityReports/{reportId} {
+      allow create: if signedIn()
+        && request.resource.data.reporterId == request.auth.uid
+        && request.resource.data.contentType in ['story', 'help']
+        && request.resource.data.contentId is string
+        && isShortText(request.resource.data.reason, 80);
+      allow read, update, delete: if false;
+    }
+  }
+}

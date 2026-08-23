@@ -1,0 +1,157 @@
+service: sakhi-ai-backend
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+  stage: ${opt:stage, 'dev'}
+  memorySize: 256
+  timeout: 30
+  environment:
+    STAGE: ${self:provider.stage}
+    AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1'
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - bedrock:InvokeModel
+            - bedrock:InvokeModelWithResponseStream
+          Resource: '*'
+        - Effect: Allow
+          Action:
+            - transcribe:StartStreamTranscription
+            - transcribe:StartTranscriptionJob
+            - transcribe:GetTranscriptionJob
+          Resource: '*'
+        - Effect: Allow
+          Action:
+            - polly:SynthesizeSpeech
+          Resource: '*'
+        - Effect: Allow
+          Action:
+            - dynamodb:PutItem
+            - dynamodb:GetItem
+            - dynamodb:UpdateItem
+            - dynamodb:Query
+            - dynamodb:Scan
+          Resource:
+            - !GetAtt UsersTable.Arn
+            - !GetAtt ConversationsTable.Arn
+            - !Join ['/', [!GetAtt ConversationsTable.Arn, 'index/*']]
+        - Effect: Allow
+          Action:
+            - s3:PutObject
+            - s3:GetObject
+          Resource:
+            - !Join ['', [!GetAtt AudioBucket.Arn, '/*']]
+
+functions:
+  health:
+    handler: src/handlers/health.handler
+    events:
+      - httpApi:
+          path: /api/health
+          method: get
+
+  chat:
+    handler: src/handlers/chat.handler
+    timeout: 60
+    memorySize: 512
+    events:
+      - httpApi:
+          path: /api/chat
+          method: post
+
+  transcribe:
+    handler: src/handlers/transcribe.handler
+    timeout: 60
+    memorySize: 512
+    environment:
+      AUDIO_BUCKET: !Ref AudioBucket
+    events:
+      - httpApi:
+          path: /api/transcribe
+          method: post
+
+  speak:
+    handler: src/handlers/speak.handler
+    timeout: 30
+    memorySize: 512
+    events:
+      - httpApi:
+          path: /api/speak
+          method: post
+
+  saveConversation:
+    handler: src/handlers/conversation.saveHandler
+    events:
+      - httpApi:
+          path: /api/conversation/save
+          method: post
+
+  getConversations:
+    handler: src/handlers/conversation.getHandler
+    events:
+      - httpApi:
+          path: /api/conversation/{userId}
+          method: get
+
+  saveUserProfile:
+    handler: src/handlers/userProfile.saveHandler
+    events:
+      - httpApi:
+          path: /api/user/profile
+          method: post
+
+  getUserProfile:
+    handler: src/handlers/userProfile.getHandler
+    events:
+      - httpApi:
+          path: /api/user/profile/{userId}
+          method: get
+
+resources:
+  Resources:
+    UsersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: sakhi-users-v2-${self:provider.stage}
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: userId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: userId
+            KeyType: HASH
+
+    ConversationsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: sakhi-conversations-v2-${self:provider.stage}
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: userId
+            AttributeType: S
+          - AttributeName: sessionId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: userId
+            KeyType: HASH
+          - AttributeName: sessionId
+            KeyType: RANGE
+
+    AudioBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: sakhi-audio-v2-${self:provider.stage}-${aws:accountId}
+        LifecycleConfiguration:
+          Rules:
+            - Id: DeleteTempAudio
+              Status: Enabled
+              ExpirationInDays: 1
+
+  Outputs:
+    ApiUrl:
+      Value: !GetAtt HttpApi.ApiEndpoint
+      Description: API Gateway endpoint URL

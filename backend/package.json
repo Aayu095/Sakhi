@@ -1,0 +1,28 @@
+{
+    "name": "sakhi-backend",
+    "version": "1.0.0",
+    "description": "Sakhi AI Voice Companion - AWS Lambda Backend",
+    "scripts": {
+        "deploy": "serverless deploy",
+        "deploy:prod": "serverless deploy --stage prod",
+        "remove": "serverless remove",
+        "logs:chat": "serverless logs -f chat -t",
+        "logs:transcribe": "serverless logs -f transcribe -t",
+        "logs:speak": "serverless logs -f speak -t",
+        "offline": "serverless offline"
+    },
+    "dependencies": {
+        "@aws-sdk/client-bedrock": "^3.1003.0",
+        "@aws-sdk/client-bedrock-runtime": "^3.1003.0",
+        "@aws-sdk/client-dynamodb": "^3.500.0",
+        "@aws-sdk/client-polly": "^3.500.0",
+        "@aws-sdk/client-s3": "^3.500.0",
+        "@aws-sdk/client-transcribe": "^3.500.0",
+        "@aws-sdk/lib-dynamodb": "^3.500.0",
+        "uuid": "^10.0.0"
+    },
+    "devDependencies": {
+        "serverless": "^3.38.0",
+        "serverless-offline": "^13.3.0"
+    }
+}

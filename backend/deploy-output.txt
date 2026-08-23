@@ -1,0 +1,40 @@
+﻿node.exe : 
+At C:\Program Files\nodejs\npx.ps1:29 char:3
++   & $NODE_EXE $NPX_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteExcept 
+   ion
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Deploying sakhi-backend to stage dev (us-east-1)
+Warning: Function (health) timeout setting (30) may not provide enough 
+room to process an HTTP API request (of which timeout is limited to 
+30s). This may introduce a situation where endpoint times out for a 
+successful lambda invocation.
+Warning: Function (chat) timeout setting (60) is greater than maximum 
+allowed timeout for HTTP API endpoint (30s). This may introduce a 
+situation where endpoint times out for a successful lambda invocation.
+Warning: Function (transcribe) timeout setting (60) is greater than 
+maximum allowed timeout for HTTP API endpoint (30s). This may 
+introduce a situation where endpoint times out for a successful lambda 
+invocation.
+Warning: Function (speak) timeout setting (30) may not provide enough 
+room to process an HTTP API request (of which timeout is limited to 
+30s). This may introduce a situation where endpoint times out for a 
+successful lambda invocation.
+Warning: Function (saveConversation) timeout setting (30) may not 
+provide enough room to process an HTTP API request (of which timeout 
+is limited to 30s). This may introduce a situation where endpoint 
+times out for a successful lambda invocation.
+Warning: Function (getConversations) timeout setting (30) may not 
+provide enough room to process an HTTP API request (of which timeout 
+is limited to 30s). This may introduce a situation where endpoint 
+times out for a successful lambda invocation.
+Warning: Function (saveUserProfile) timeout setting (30) may not 
+provide enough room to process an HTTP API request (of which timeout 
+is limited to 30s). This may introduce a situation where endpoint 
+times out for a successful lambda invocation.
+Warning: Function (getUserProfile) timeout setting (30) may not 
+provide enough room to process an HTTP API request (of which timeout 
+is limited to 30s). This may introduce a situation where endpoint 
+times out for a successful lambda invocation.

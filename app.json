@@ -1,0 +1,58 @@
+{
+  "expo": {
+    "name": "Sakhi",
+    "slug": "sakhi",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSMicrophoneUsageDescription": "Sakhi से बात करने के लिए माइक्रोफोन की अनुमति दें",
+        "NSSpeechRecognitionUsageDescription": "आपकी बात सुनने के लिए स्पीच रिकग्निशन की अनुमति दें"
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "permissions": [
+        "RECORD_AUDIO",
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "com.dididial.app",
+      "edgeToEdgeEnabled": true
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "runtimeVersion": "1.0.0",
+    "updates": {
+      "url": "https://u.expo.dev/84d52b11-ef9a-48dd-b0ec-2cac9e315995"
+    },
+    "plugins": [
+      "expo-font",
+      [
+        "expo-speech-recognition",
+        {
+          "microphonePermission": "Sakhi से बात करने के लिए माइक्रोफोन की अनुमति दें",
+          "speechRecognitionPermission": "आपकी बात सुनने के लिए स्पीच रिकग्निशन की अनुमति दें"
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "da48cdcd-e20b-4f31-8e04-eba7e6cb9679"
+      }
+    },
+    "owner": "aayushigoel"
+  }
+}
