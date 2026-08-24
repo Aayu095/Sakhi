@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <strong>A Hindi-first, voice-guided learning companion that helps women build everyday digital confidence.</strong>
+  <strong>A voice-guided digital-confidence companion for women—designed to meet them in the language that feels most familiar.</strong>
 </p>
 
 <p align="center">
@@ -21,17 +21,18 @@
 
 **Sakhi turns intimidating digital tasks into a calm conversation with a trusted didi.**
 
-Many people have a smartphone but still hesitate to use UPI, identify a scam, explore WhatsApp, or look up essential health and rights information. Sakhi is designed to make that first step feel safe: speak in Hindi/Hinglish, get a short and empathetic explanation, and learn one useful thing at a time.
+Sakhi is for women who have a smartphone but do not yet feel confident using it independently. A phone may be in their hands, but sending a payment, scanning a QR code, identifying a scam, finding trustworthy health information, or even pressing the wrong button can still feel risky. Sakhi makes that first step feel safe: ask a question in a familiar language, receive a short and empathetic explanation, and learn one useful skill at a time.
 
 ## Why Sakhi?
 
 Digital access is not the same as digital confidence.
 
-For a first-time or low-confidence smartphone user, a small mistake can feel expensive: sharing an OTP, opening a suspicious link, or making an incorrect payment. Text-heavy apps, unfamiliar English, and fear of asking questions can make essential information feel out of reach.
+Across India, many women own or can access a smartphone but still depend on someone else for important digital tasks. Text-heavy apps, unfamiliar English, fear of making a costly mistake, and hesitation to ask for help can keep everyday services out of reach. A small mistake can feel expensive: sharing an OTP, opening a suspicious link, or making an incorrect payment.
 
 Sakhi responds to that gap with a familiar interaction model:
 
-- **Hindi-first and human in tone** — simple language, short answers, no technical jargon.
+- **Built for women’s everyday realities** — practical support for the tasks that affect independence, safety, and access to information.
+- **Language that feels familiar** — the current prototype demonstrates Hindi/Hinglish; Sakhi’s product direction is to adapt the same experience and content for local languages, so language is not another barrier to learning.
 - **Voice-style learning** — users can speak when optional speech transcription is configured, or write when it is not.
 - **Practical topics** — smartphone basics, digital payments, fraud awareness, health education, safety, and rights.
 - **Learning without judgement** — guidance is framed like a patient conversation, not a lecture.
@@ -40,8 +41,8 @@ Sakhi responds to that gap with a familiar interaction model:
 
 ## What judges can experience
 
-### 1. Start with a welcoming, Hindi-first journey
-Create an account, complete onboarding, and enter a calm interface built with readable Devanagari typography and accessible controls.
+### 1. Start with a welcoming, women-first journey
+Create an account, complete onboarding, and enter a calm interface built with readable Devanagari typography and accessible controls. The submission build presents this journey in Hindi/Hinglish; its voice-led, simple-language approach is intended to be carried into additional local languages.
 
 ### 2. Ask Sakhi a question
 Open **“सखी से बोलकर सीखें”** and choose a topic such as digital literacy, financial safety, health, or rights.
@@ -61,11 +62,12 @@ Use Community Learning to share stories, request help, offer support, and report
 | Experience | What Sakhi provides |
 | --- | --- |
 | **Voice-style conversation** | A responsive call surface with live call state, typed fallback, spoken output, latest-turn review, and a clear end-of-call summary. |
-| **Digital confidence** | Simple guidance for smartphones, WhatsApp, UPI awareness, OTP safety, and suspicious links. |
+| **Digital confidence for women** | Simple guidance for smartphones, WhatsApp, UPI awareness, OTP safety, and suspicious links—skills that support everyday independence. |
+| **Familiar-language learning** | The current experience is Hindi/Hinglish-first, with a product direction that supports adapting lessons and conversations for local languages. |
 | **Guided learning** | Video and read-and-learn routes for small, focused lessons instead of overwhelming information dumps. |
 | **Safety-aware design** | Sensitive health, rights, and financial topics are presented as educational guidance with clear boundaries. |
 | **Community Learning** | Signed-in users can create stories and help requests, offer help, and report content. |
-| **Accessible by default** | Hindi-first Noto typography, clear tap targets, visible states, and an uncluttered mobile UI. |
+| **Accessible by default** | Readable Devanagari typography, clear tap targets, visible states, and an uncluttered mobile UI. |
 | **Graceful fallback** | Optional cloud services can be unavailable without blocking the base flow: typed input, local topic guidance, and device speech keep the experience usable. |
 
 ## Screens
@@ -79,16 +81,18 @@ Use Community Learning to share stories, request help, offer support, and report
 ## How it works
 
 ```text
-User chooses a topic
+Woman chooses a topic
         ↓
-Speaks or writes in Hindi / Hinglish
+Speaks or writes in a familiar language
         ↓
 Sakhi gives concise, topic-aware guidance
         ↓
 Answer is spoken on-device or through optional cloud speech
         ↓
-User reviews the latest exchange and continues learning
+She reviews the latest exchange and continues learning
 ```
+
+The current submission build demonstrates the interaction in Hindi/Hinglish. Sakhi is intentionally designed to grow into a local-language experience: the same patient, voice-led flow can be adapted with translated content and language-specific review rather than expecting women to learn through English-first interfaces.
 
 ### Resilient interaction model
 
@@ -104,7 +108,8 @@ Sakhi deliberately does not make the experience dependent on a single provider:
 | Layer | Technology |
 | --- | --- |
 | Mobile client | React Native, Expo, React Navigation |
-| Language & accessibility | Noto Sans Devanagari, Hindi-first UI, Expo Speech, Expo AV |
+| Current language experience | Noto Sans Devanagari, Hindi/Hinglish UI, Expo Speech, Expo AV |
+| Future language direction | Local-language content and conversation adaptation, with language-specific review before expansion |
 | Authentication | Firebase Authentication with email/password sign-in |
 | User data & community | Cloud Firestore, Firebase rules, AsyncStorage profile cache |
 | Optional assistant backend | Serverless Framework, AWS Lambda, API Gateway, Bedrock, Polly, Transcribe, DynamoDB, S3 |
@@ -151,6 +156,7 @@ Sakhi is built around a few non-negotiable product choices:
 3. **Safer digital behavior:** scam-awareness lessons reinforce OTP/PIN and suspicious-link safety.
 4. **Account-aware community:** Firestore rules scope user profiles to their owner and require authentication for Community Learning access.
 5. **Optional cloud, useful base experience:** the app remains demonstrable without requiring an active AWS deployment.
+6. **Language should not exclude:** the current Hindi/Hinglish prototype is a starting point, not the limit of who Sakhi is intended to serve.
 
 ## Run locally
 
@@ -231,7 +237,7 @@ Sakhi/
 
 ## Future direction
 
-- More regional-language experiences and local-language content review.
+- Add thoughtfully reviewed experiences in more regional and local languages.
 - Source-backed public-service information and stronger referral pathways.
 - More guided practice for digital payments and scam recognition.
 - Better privacy controls, consent, account-data management, and moderation workflows.
@@ -243,5 +249,5 @@ Distributed under the [Apache License 2.0](./LICENSE).
 ---
 
 <p align="center">
-  <strong>Built to make the next tap feel less frightening—and the next skill feel possible.</strong>
+  <strong>Built so every woman can make the next tap feel less frightening—and the next skill feel possible.</strong>
 </p>
